@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 
 import { ServicioNocturnoService } from '../servicio-nocturno.service';
 
@@ -58,16 +59,16 @@ export class TiposDocComponent implements OnInit {
           this.TablaTipDocs[0] = "Indicador";
           this.TablaTipDocs[1] = "Denominación";
           this.TablaTipDocs[2] = "Iniciales";
-          console.error(" El listado 3 " + this.TipDocs);
+          //console.error(" El listado 3 " + this.TipDocs);
         }
         else if (op == 2) {
           this.comboListaTipDoc = data; //JSON.parse(data);
           this.MiTipDoc = null;
-          this.TituloTipDoc = "";
-          this.TabBusTipDocs[0] = "";
-          this.TabBusTipDocs[1] = "";
-          this.TabBusTipDocs[2] = "";
-          console.error(" El listado 4 ");
+          this.TituloTipDoc = "TIPO DE DOCUMENTO SELECCIONADO";
+          this.TabBusTipDocs[0] = "Indicador";
+          this.TabBusTipDocs[1] = "Denominación";
+          this.TabBusTipDocs[2] = "Iniciales";
+          //console.error(" El listado 4 ");
         }
         else if (op == 3) {/*
         this.comboEditarTipDoc = JSON.parse(data);
@@ -103,10 +104,10 @@ export class TiposDocComponent implements OnInit {
   public buscarTipDoc() {
     var filtrovalor = this.filtrarTipDoc.getRawValue()['combofiltro'];
     this.servi.getTipDoc('/' + filtrovalor).subscribe((data: {}) => {
-      this.MiTipDoc = "TIPO DE DOCUMENTO SELECCIONADO";
-      this.TabBusTipDocs[0] = "Indicador";
+      this.MiTipDoc = data;//"TIPO DE DOCUMENTO SELECCIONADO";
+      /*this.TabBusTipDocs[0] = "Indicador";
       this.TabBusTipDocs[1] = "Denominación";
-      this.TabBusTipDocs[2] = "Iniciales";
+      this.TabBusTipDocs[2] = "Iniciales";*/
     },
       error => { console.log(error) });
   }
