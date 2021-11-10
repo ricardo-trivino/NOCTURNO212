@@ -1,0 +1,91 @@
+<body>
+    <div style="text-align:center" class="head">
+        <h1>
+            {{ title }}
+        </h1>
+        <img width="200" alt="Logo Proyecto" src="../assets/free-logo-i9r67fo4cz-4186t5au7q.jpg">
+    </div>
+    <br><br><br><br>
+    <!--------------------------------------------------------------------------------------------->
+    <!--mostrar lista tipos de documentos-->
+    <div class="lista">
+        <h2> Lista de los tipos de documentos</h2>
+        <form (ngSubmit)="consultaTipoDocumentos(1)" [formGroup]="ListaTiposDocum">
+            <button type="submit" style="margin-right: 30px"> Mostrar Lista de Tipos de Documentos</button>
+            <button (click)="LimpiarLista()" style="scroll-margin-left: 30px"> Limpiar Lista todos los Tipos de
+                Documentos</button>
+
+            <br><br>
+
+            <h2>{{TituloTipDocs}}</h2>
+            <table>
+                <thead>
+                    <th>{{TablaTipDocs[0]}}</th>
+                    <th>{{TablaTipDocs[1]}}</th>
+                    <th>{{TablaTipDocs[2]}}</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tdoc of TipDocs">
+                        <th>{{tdoc.id_tip_doc}}</th>
+                        <th>{{tdoc.tipo_documento}}</th>
+                        <th>{{tdoc.iniciales_tip_doc}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- para mostrar el un solo Tipo de Documento -->
+
+    <div class="buscar">
+        <h2>Mostramos el Tipo de Documento seleccionado: </h2>
+
+        <form (ngSubmit)="buscarTipDoc()" [formGroup]="filtrarTipDoc">
+            Id del Tipo de Documento a mostrar
+            <select class="dropdown" formControlName="combofiltro" (click)="consultaTipoDocumentos(2)">
+                <option value="value1">Tipo de Documento a buscar</option>
+                <option *ngFor="let TipDoc of comboListaTipDoc" [value]="TipDoc.id_tip_doc">
+                    {{TipDoc.tipo_documento}} -
+                    {{TipDoc.iniciales_tip_doc}}
+                </option>
+            </select>
+
+            <br><br>
+
+
+            <button type="submit">Buscar Tipo Documento</button>
+        </form>
+
+        <ul>
+            <h2>{{TituloTipDoc}}</h2>
+
+            <table class="tabBuscar">
+                <thead class="Colb">
+                    <th class="b">{{TabBusTipDocs[0]}}</th>
+                    <th class="b">{{TabBusTipDocs[1]}}</th>
+                    <th class="b">{{TabBusTipDocs[2]}}</th>
+                </thead>
+
+                <tbody class="Filb">
+                    <tr class="b" *ngFor="let tdoc of MiTipDoc">
+                        <th class="b">{{tdoc.id_tip_doc}} </th>
+                        <th class="b">{{tdoc.tipo_documento}} </th>
+                        <th class="b">{{tdoc.iniciales_tip_doc}} </th>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </ul>
+
+        <br>
+
+    </div>
+    <br><br><br><br>
+
+    <div>
+        <h3><a routerLink="/Inicio">Menú Inicio</a></h3>
+    </div>
+</body>
