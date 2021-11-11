@@ -38,9 +38,14 @@
 }
 
 .menu a{
-    font-family: candara, ginebra;
+    font-family: "candara", "ginebra";
     text-decoration: none;
     color: #000000;
+}
+
+.menu a:hover{
+    font-size: 20px;
+    transition: ease-in-out 0.35s;
 }
 
 footer {
